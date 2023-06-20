@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kalkulator Daya Pembangkit Listrik Tenaga Diesel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .result {
+      background-color: #f9f9f9;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kalkulator Daya Pembangkit Listrik Tenaga Diesel</h1>
+  <div class="container">
+    <label for="fuel">Konsumsi Bahan Bakar per Jam (Liter):</label>
+    <input type="number" id="fuel" step="0.1" min="0">
+    
+    <label for="efficiency">Efisiensi Pembangkit (%):</label>
+    <input type="number" id="efficiency" step="0.1" min="0">
+    
+    <button onclick="calculatePower()">Hitung</button>
+    
+    <div class="result" id="resultContainer" style="display: none;">
+      <p>Daya Pembangkit: <span id="power"></span> kW</p>
+    </div>
+  </div>
+
+  <script>
+    function calculatePower() {
+      var fuel = parseFloat(document.getElementById('fuel').value);
+      var efficiency = parseFloat(document.getElementById('efficiency').value);
+      
+      if (isNaN(fuel) || isNaN(efficiency)) {
+        alert('Mohon masukkan angka yang valid.');
+        return;
+      }
+      
+      var power = fuel * efficiency;
+      document.getElementById('power').textContent = power.toFixed(2);
+      document.getElementById('resultContainer').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
